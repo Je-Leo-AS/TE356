@@ -12,7 +12,7 @@ function ser = MonteCarlo8ASK(EbN0, numIter, N)
             n = sqrt(sigma_sq)*(randn(N,1)+1i*randn(N,1));
             r = symb + n;
             [~, idx] = min(abs(repmat(r,1,8)-repmat([-7:2:7],N,1)),[],2);
-            bitsRx = reshape(dec2binarray(idx-1,3),[],1)';
+            bitsRx = reshape(dectobinarray(idx-1,3),[],1)';
             bitsRx_reshape = reshape(bitsRx',1,N*3);
             erro = sum(bits~=bitsRx_reshape)/N;
             erro_total(i) = erro;
