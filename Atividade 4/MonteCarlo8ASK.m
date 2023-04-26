@@ -6,19 +6,18 @@ function ser = MonteCarlo8ASK(EbN0, numIter, N)
     for k=1:length(EbN0)
         erro = 0;
         SNR = 10^(EbN0(k)/10);
-        sigma_sq = 1/(2*SNR);
+        sigma_sq = 1 / (2*SNR);
         sigma = sqrt(sigma_sq);
         for i=1:numIter
-           ind = randi(8);
-           simbolo_constelacao = symb(ind);
-           noise = randn * sigma_sq;
-           simbolo_noise = simbolo_constelacao + noise;
-           [v,ind2] = min(abs(symb - simbolo_noise));
-           simbolo_recebido = symb(ind2);
-
-           if (simbolo_recebido ~= simbolo_constelacao)
-             erro = erro + 1;
-           endif
+            ind = randi(8);
+            simbolo_constelacao = symb(ind);
+            noise = randn * sigma;
+            simbolo_noise = simbolo_constelacao + noise;
+            [v,ind2] = min(abs(symb - simbolo_noise));
+            simbolo_recebido = symb(ind2);
+            if (simbolo_recebido ~= simbolo_constelacao)
+                erro = erro + 1;
+            end
         end
         ser(k) = erro/numIter;
     end
