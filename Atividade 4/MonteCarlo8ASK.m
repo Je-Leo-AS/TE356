@@ -11,9 +11,10 @@ function ser = MonteCarlo8ASK(EbN0, numIter, N)
         for i=1:numIter
            ind = randi(8);
            simbolo_constelacao = symb(ind);
-           noise = randn * sigma;
+           noise = randn * sigma_sq;
            simbolo_noise = simbolo_constelacao + noise;
-           [v,simbolo_recebido] = min(abs(const - simbolo_noise));
+           [v,ind2] = min(abs(symb - simbolo_noise));
+           simbolo_recebido = symb(ind2);
 
            if (simbolo_recebido ~= simbolo_constelacao)
              erro = erro + 1;
