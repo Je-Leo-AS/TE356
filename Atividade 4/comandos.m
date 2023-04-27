@@ -19,7 +19,7 @@ hold on
 plot(EbN0,ser8);
 
 figure
-Curva_teorica_BPSK;
+Curva_teorica_16QAM;
 EbN0 = [0 5 10 12];
 ser16 = MonteCarlo16QAM(EbN0, numIter, N);
 plot(EbN0,ser16);
