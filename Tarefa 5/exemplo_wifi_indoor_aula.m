@@ -9,7 +9,7 @@ clear; clc; close all;
 area_width=150;
 area_height=150;
 
-step_grid=1;           % Passo de simula��o em pixels (Controle de Complexidade/Velocidade)
+step_grid=5;           % Passo de simula��o em pixels (Controle de Complexidade/Velocidade)
 
 a=1:step_grid:area_width;      area_width=a(end);
 a=1:step_grid:area_height;     area_height=a(end);
@@ -33,7 +33,7 @@ wall_h= [ 2   2    2    8;
 		  6   2    6    4;
           7   2    7    11;
 		  8   4    8    6;
-		  13  4    13   11; 
+		  13  4    13   11;
         ];
 
 % Passa para a Escala de Pixels - 10 pixels/metro
@@ -108,7 +108,7 @@ x_ap=x_ap*10;   y_ap=y_ap*10;
 % ------------------------------------------------------------------------------------
 f=2.412e9;
 Pt_dBm=20; % Pot�ncia de Transmiss�o em dBm
-Gt=0; % Ganho da Antena Transmissora (dBi)
+Gt=5; % Ganho da Antena Transmissora (dBi)
 Gr=0; % Ganho da Antena Receptora (dBi)
 n=2.5;  % Expoente de Perda de Percurso do Log-Distance
 d0=1;   % Distancia de referencia
@@ -228,7 +228,7 @@ end
 xx=1:length(x);
 yy=1:length(y);
 
-figure(7)
+figure(3)
 surface(xx,yy,flipud(Pr_dBm),'FaceColor','interp')
 shading interp
 colormap(gca,'jet');
@@ -239,7 +239,7 @@ hold
 draw_scenario(area_width,area_height,wall_v,wall_h)
 
 
-figure(8)
+figure(4)
 surface(xx,yy,flipud(Taxa),'FaceColor','interp')
 shading interp
 colormap(gca,'jet');
